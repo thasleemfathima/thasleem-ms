@@ -1,0 +1,44 @@
+<html >
+<body  ng-app="myModule">
+ <script src="angular.min.js"></script>
+<script>
+var a=angular.module("myModule",[])
+a.controller("controllerOne",function($scope,$rootScope)
+{
+$scope.login=true;
+$rootScope.home=false;
+$scope.button_clicked=function()
+{
+if($scope.name=="thasleem" && $scope.pwd=="thas")
+{
+$scope.login=false;
+$rootScope.home=true;
+}
+else
+{
+$scope.login=true;
+$rootScope.home=false;
+$scope.message="invalid user";
+}
+}
+});
+a.controller("controllerTwo",function($scope)
+{
+});
+</script>
+<div ng-controller="controllerOne" ng-show="login">
+name:
+<input type="text" ng-model="name" placeholder="enter name " >
+<br>
+password:
+<input type="password" ng-model="pwd" placeholder="enter password">
+<br>
+{{message}}
+<button ng-click="button_clicked()">SUBMIT</button>
+<br>
+</div>
+<div ng-controller="controllerTwo" ng-show="home">
+welcome to home page{{message}}
+</div>
+</body>
+</html>
