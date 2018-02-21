@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<script src="angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="formCtrl">
+  <form name="myForm">
+    First Name:<br>
+    <input type="text" ng-model="firstName"><br>
+    Last Name:<br>
+    <input type="text" ng-model="lastName">
+    <br>
+<h>firstname={{firstName}}</h>
+<h>lastname={{lastName}}</h>
+ <br>
+  Select dept:
+  <select ng-model="myVar">
+    <option value="">
+    <option value="CSE">CSE
+    <option value="IT">IT
+    <option value="ECE">ECE
+<option value="MECH">MECH
+<option value="CIVIL">CIVIL
+  </select>
+<div ng-switch="myVar">
+  <div ng-switch-when="CSE">
+     <p>you selected CSE</p>
+  </div>
+  <div ng-switch-when="IT">
+         <p>you selected IT</p>
+  </div>
+  <div ng-switch-when="ECE">
+    
+     <p>you selected ECE</p>
+  </div>
+<div ng-switch-when="MECH">
+      <p>you selected MECH</p>
+</div>
+<div ng-switch-when="CIVIL">
+<p>you selected CIVIL</p>
+</div>
+</div>
+<br>
+gender:
+    <input type="radio" ng-model="myVarr" value="male">male
+<input type="radio" ng-model="myVarr" value="female">female<br>
+<div ng-switch="myVarr">
+<div ng-switch-when="male">
+<h1>male</h1>
+<p>you selected male</p>
+</div>
+<div ng-switch-when="female">
+<h1>female</h1>
+<p>you selected female</p>
+</div>
+</div>
+<br>
+email:<br>
+<input type="email" name="myInput" ng-model="myInput"><br>
+<span style="color:red" ng-show="myForm.myInput.$dirty && myForm.myInput.$invalid">
+<span ng-show="myForm.myInput.$error.required">Email is required.</span>
+<span ng-show="myForm.myInput.$error.email">Invalid email address.</span>
+</span>
+<tt>email={{myInput}}</tt>
+<br>
+<br>
+address:<br>
+<textarea name="message" rows="10" cols="15" ng-model="myInputt" required>
+</textarea><br>
+<tt>address={{myInputt}}</tt>
+<br>
+<button ng-click="reset()">RESET</button>
+<p first Name={{user.firstName}}></p>
+<p last Name={{user.lastName}}</p>
+</div>
+</form>
+<script>
+var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+    
+    $scope.reset = function() {
+    $scope.firstName;
+    $scope.lastName;
+    $scope.email;
+    $scope.myVar;
+    $scope.myVarr;
+$scope.reset(); 
+}   
+});
+
+</script>
+</body>
+</html>
